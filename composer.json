@@ -1,0 +1,14 @@
+{
+    "name": "mrstebo/ekm-api-php-client",
+    "description": "A PHP client library for accessing EKM APIs",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Steven Atkinson",
+            "email": "mrstebouk@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
