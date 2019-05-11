@@ -12,4 +12,10 @@ class OrderStatusesApi
     {
         $this->client = $client;
     }
+
+    public function getOrderStatuses()
+    {
+        $response = $this->client->request('GET', '/v1/settings/orderstatuses');
+        return $response;
+    }
 }
