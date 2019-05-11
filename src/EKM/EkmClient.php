@@ -2,22 +2,37 @@
 
 namespace EKM;
 
+use GuzzleHttp\Client as Guzzle;
+use GuzzleHttp\HandlerStack;
+
 class EkmClient
 {
     private $config;
+    private $http;
 
-    public function __construct(Configuration $config)
+    public function __construct(Configuration $config, Guzzle $http = null)
     {
         $this->config = $config;
+        $this->http = $http;
     }
 
-    public function getOrdersApi()
+    public function request(string $method, string $uri, array $options = [])
     {
-        return new Api\OrdersApi($this->config);
+        $token = $this->config->getAccessToken();
+        if (isset($token))
+        {
+            $request = $request['headers']['Authorization'] = 'Bearer '.$token;
+        }
+        return parent::request($method, $uri, $options);
     }
 
-    public function getOrderStatusesApi()
+    public function getOrdersApi(): Api\OrdersApi
     {
-        return new Api\OrderStatusesApi($this->config);
+        return new Api\OrdersApi($this);
+    }
+
+    public function getOrderStatusesApi(): Api\OrderStatusesApi
+    {
+        return new Api\OrderStatusesApi($this);
     }
 }

@@ -2,14 +2,14 @@
 
 namespace EKM\Api;
 
-use EKM\Configuration;
+use EKM\EkmClient;
 
 class OrdersApi
 {
-    private $config;
+    private $client;
 
-    public function __construct(Configuration $config)
+    public function __construct(EkmClient $client)
     {
-        $this->config = $config;
+        $this->client = $client;
     }
 }
