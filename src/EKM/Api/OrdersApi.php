@@ -1,6 +1,6 @@
 <?php
 
-namespace mrstebo\EKM\Api;
+namespace EKM\Api;
 
 use EKM\Configuration;
 
