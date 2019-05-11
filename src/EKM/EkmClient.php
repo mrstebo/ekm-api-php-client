@@ -23,7 +23,7 @@ class EkmClient
         {
             $request = $request['headers']['Authorization'] = 'Bearer '.$token;
         }
-        return parent::request($method, $uri, $options);
+        return $this->http->request($method, $uri, $options);
     }
 
     public function getOrdersApi(): Api\OrdersApi
