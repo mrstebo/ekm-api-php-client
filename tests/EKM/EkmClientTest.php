@@ -14,6 +14,14 @@ final class EkmClientTest extends TestCase
     protected function setUp(): void
     {
         $this->config = Configuration::create();
-        $this->client = EkmClient($this->config);
+        $this->client = new EkmClient($this->config);
+    }
+
+    public function testOrderStatuses()
+    {
+        $this->assertInstanceOf(
+            EKM\Api\OrderStatusesApi::class,
+            $this->client->orderStatuses()
+        );
     }
 }
