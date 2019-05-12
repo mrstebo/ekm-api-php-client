@@ -23,7 +23,10 @@ class EkmClient
         {
             $request = $request['headers']['Authorization'] = 'Bearer '.$token;
         }
-        return $this->http->request($method, $uri, $options);
+        $response = $this->http->request($method, $uri, $options);
+        $body = $response->getBody();
+        $json = json_decode($body->getContents(), true);
+        return $json;
     }
 
     public function getOrderStatusesApi(): Api\OrderStatusesApi

@@ -3,6 +3,7 @@
 namespace EKM\Api;
 
 use EKM\EkmClient;
+use EKM\Responses\GetOrderStatusesResponse;
 
 class OrderStatusesApi
 {
@@ -16,6 +17,6 @@ class OrderStatusesApi
     public function getOrderStatuses()
     {
         $response = $this->client->request('GET', '/v1/settings/orderstatuses');
-        return $response;
+        return new GetOrderStatusesResponse($response);
     }
 }

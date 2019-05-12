@@ -17,11 +17,27 @@ final class OrderStatusesApiTest extends TestCase
 
     public function testGetOrderStatuses()
     {
-        $this->client->method('request')
-            ->willReturn(new Response(200, [], "{}"));
+        $response = new Response(200, [], json_encode([
+            'meta' => EKM\Models\Meta::empty(),
+            'links' => [],
+            'data' => json_encode([
+                'statuses' => [
+                    new EKM\Models\OrderStatus([
+                        'name' => 'Test',
+                        'colour' => '#00FF00',
+                        'show_in_quick_stats' => true
+                    ])
+                ]
+            ])
+        ]));
 
-        $response = $this->api->getOrderStatuses();
-        $json = json_decode($response->getBody());
-        $this->assertEquals("", $json);
+        $this->client->method('request')
+            ->willReturn($response);
+
+        $result = $this->api->getOrderStatuses();
+        $expected = new EKM\Responses\GetOrderStatusesResponse($response);
+        $this->assertEquals($expected, $result);
+        $this->assertNull($result->getMeta());
+        $this->assertEmpty($result->getLinks());
     }
 }
