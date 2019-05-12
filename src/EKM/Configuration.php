@@ -5,25 +5,120 @@ namespace EKM;
 class Configuration
 {
     /**
+     * Client ID for OAuth
+     *
+     * @var string
+     */
+    private $clientId = '';
+
+    /**
+     * Client Secret for OAuth
+     *
+     * @var string
+     */
+    private $clientSecret = '';
+
+    /**
+     * Redirect URI for OAuth
+     *
+     * @var string
+     */
+    private $redirectUri = '';
+
+    /**
      * Access token for OAuth
      *
      * @var string
      */
-    protected $accessToken = '';
+    private $accessToken = '';
 
     /**
      * The host
      *
      * @var string
      */
-    protected $host = 'https://api.ekm.net';
+    private $host = 'https://api.ekm.net';
 
     /**
      * User agent of the HTTP request, set to "EKM-PHP-Client" by default
      *
      * @var string
      */
-    protected $userAgent = "EKM-PHP-Client/1.0.0/PHP";
+    private $userAgent = "EKM-PHP-Client/1.0.0/PHP";
+
+    private function __construct()
+    {
+        // Use Configuration::create();
+    }
+
+    /**
+     * Sets the client ID for OAuth
+     *
+     * @param string $clientId Client ID for OAuth
+     *
+     * @return $this
+     */
+    public function setClientId($clientId)
+    {
+        $this->clientId = $clientId;
+        return $this;
+    }
+
+    /**
+     * Gets the client ID for OAuth
+     *
+     * @return string Client ID for OAuth
+     */
+    public function getClientId()
+    {
+        return $this->clientId;
+    }
+
+    /**
+     * Sets the client secret for OAuth
+     *
+     * @param string $clientSecret Client secret for OAuth
+     *
+     * @return $this
+     */
+    public function setClientSecret($clientSecret)
+    {
+        $this->clientSecret = $clientSecret;
+        return $this;
+    }
+
+    /**
+     * Gets the client secret for OAuth
+     *
+     * @return string Client secret for OAuth
+     */
+    public function getClientSecret()
+    {
+        return $this->clientSecret;
+    }
+
+    /**
+     * Sets the redirect URI for OAuth
+     *
+     * @param string $redirectUri Redirect URI for OAuth
+     *
+     * @return $this
+     */
+    public function setRedirectUri($redirectUri)
+    {
+        $this->redirectUri = $redirectUri;
+        return $this;
+    }
+
+    /**
+     * Gets the redirect URI for OAuth
+     *
+     * @return string Redirect URI for OAuth
+     */
+    public function getRedirectUri()
+    {
+        return $this->redirectUri;
+    }
 
     /**
      * Sets the access token for OAuth
@@ -100,28 +195,12 @@ class Configuration
     }
 
     /**
-     * Gets the default configuration instance
+     * Creates a new configuration instance
      *
      * @return Configuration
      */
-    public static function getDefaultConfiguration()
+    public static function create()
     {
-        if (self::$defaultConfiguration === null) {
-            self::$defaultConfiguration = new Configuration();
-        }
-
-        return self::$defaultConfiguration;
-    }
-
-    /**
-     * Sets the detault configuration instance
-     *
-     * @param Configuration $config An instance of the Configuration Object
-     *
-     * @return void
-     */
-    public static function setDefaultConfiguration(Configuration $config)
-    {
-        self::$defaultConfiguration = $config;
+        return new Configuration();
     }
 }

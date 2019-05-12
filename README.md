@@ -6,12 +6,11 @@ A PHP client library for accessing EKM APIs
 Below is an example of how to use the client:
 
 ```php
-$config = new ConfigurationBuilder()
-    ->withClientId("my-client-id")
-    ->withClientSecret("my-client-secret")
-    ->withRedirectUri("https://my-site.com/callback")
-    ->withAccessToken("my-access-token")
-    ->build();
+$config = Configuration::create()
+    ->setClientId("my-client-id")
+    ->setClientSecret("my-client-secret")
+    ->setRedirectUri("https://my-site.com/callback")
+    ->setAccessToken("my-access-token");
 $client = new EkmClient($config);
 
 // Refresh the token (automatically sets the access token)

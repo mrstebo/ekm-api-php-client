@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+use EKM\Configuration;
+use EKM\EkmClient;
+
 final class EkmClientTest extends TestCase
 {
     private $config;
@@ -10,7 +13,7 @@ final class EkmClientTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->config = new EKM\Configuration();
-        $this->client = new EKM\EkmClient($this->config);
+        $this->config = Configuration::create();
+        $this->client = EkmClient($this->config);
     }
 }
