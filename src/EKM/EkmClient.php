@@ -28,9 +28,4 @@ class EkmClient
         $json = json_decode($body->getContents(), true);
         return $json;
     }
-
-    public function getOrderStatusesApi(): Api\OrderStatusesApi
-    {
-        return new Api\OrderStatusesApi($this);
-    }
 }

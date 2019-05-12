@@ -13,12 +13,4 @@ final class EkmClientTest extends TestCase
         $this->config = new EKM\Configuration();
         $this->client = new EKM\EkmClient($this->config);
     }
-
-    public function testGetOrderStatusesApi()
-    {
-        $this->assertInstanceOf(
-            EKM\Api\OrderStatusesApi::class,
-            $this->client->getOrderStatusesApi()
-        );
-    }
 }
