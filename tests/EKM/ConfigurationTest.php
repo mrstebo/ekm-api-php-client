@@ -7,73 +7,73 @@ use EKM\Configuration;
 
 final class ConfigurationTest extends TestCase
 {
-    public function testClientId()
+    public function testGetClientId()
     {
         $config = Configuration::create()->setClientId("test");
         $this->assertEquals("test", $config->getClientId());
     }
 
-    public function testClientIdHasDefault()
+    public function testGetClientIdHasDefault()
     {
         $config = Configuration::create();
         $this->assertEquals("", $config->getClientId());
     }
 
-    public function testClientSecret()
+    public function testGetClientSecret()
     {
         $config = Configuration::create()->setClientSecret("test");
         $this->assertEquals("test", $config->getClientSecret());
     }
 
-    public function testClientSecretHasDefault()
+    public function testGetClientSecretHasDefault()
     {
         $config = Configuration::create();
         $this->assertEquals("", $config->getClientSecret());
     }
 
-    public function testRedirectUri()
+    public function testGetRedirectUri()
     {
         $config = Configuration::create()->setRedirectUri("test");
         $this->assertEquals("test", $config->getRedirectUri());
     }
-    
-    public function testRedirectUriHasDefault()
+
+    public function testGetRedirectUriHasDefault()
     {
         $config = Configuration::create();
         $this->assertEquals("", $config->getRedirectUri());
     }
 
-    public function testAccessToken()
+    public function testGetAccessToken()
     {
         $config = Configuration::create()->setAccessToken("test");
         $this->assertEquals("test", $config->getAccessToken());
     }
 
-    public function testAccessTokenHasDefault()
+    public function testGetAccessTokenHasDefault()
     {
         $config = Configuration::create();
         $this->assertEquals("", $config->getAccessToken());
     }
 
-    public function testHost()
+    public function testGetHost()
     {
         $config = Configuration::create()->setHost("test");
         $this->assertEquals("test", $config->getHost());
     }
 
-    public function testHostHasDefault()
+    public function testGetHostHasDefault()
     {
         $config = Configuration::create();
         $this->assertEquals("https://api.ekm.net", $config->getHost());
     }
 
-    public function testUserAgent()
+    public function testGetUserAgent()
     {
         $config = Configuration::create()->setUserAgent("test");
         $this->assertEquals("test", $config->getUserAgent());
     }
 
-    public function testUserAgentHasDefault()
+    public function testGetUserAgentHasDefault()
     {
         $config = Configuration::create();
         $this->assertEquals("EKM-PHP-Client/1.0.0/PHP", $config->getUserAgent());
