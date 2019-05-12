@@ -26,11 +26,6 @@ class EkmClient
         return $this->http->request($method, $uri, $options);
     }
 
-    public function getOrdersApi(): Api\OrdersApi
-    {
-        return new Api\OrdersApi($this);
-    }
-
     public function getOrderStatusesApi(): Api\OrderStatusesApi
     {
         return new Api\OrderStatusesApi($this);
