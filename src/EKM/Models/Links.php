@@ -12,7 +12,7 @@ class Links
     /**
      * Gets the links
      *
-     * @return Generator
+     * @return Link[]
      */
     public function getLinks()
     {
