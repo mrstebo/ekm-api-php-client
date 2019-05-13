@@ -13,7 +13,9 @@ class EkmClient
     public function __construct(Configuration $config, Guzzle $http = null)
     {
         $this->config = $config;
-        $this->http = $http;
+        $this->http = $http ?: new Guzzle([
+            'base_uri' => $config->getHost()
+        ]);
     }
 
     public function request(string $method, string $uri, array $options = [])
