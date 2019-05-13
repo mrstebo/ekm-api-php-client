@@ -45,7 +45,7 @@ final class ConfigurationTest extends TestCase
 
     public function testGetScopes()
     {
-        $scopes = ['tempest:read_products', 'tempest:write_products'];
+        $scopes = ['tempest.products.read', 'tempest.products.write'];
         $config = Configuration::create()->setScopes($scopes);
         $this->assertEquals($scopes, $config->getScopes());
     }
