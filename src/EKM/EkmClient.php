@@ -32,6 +32,19 @@ class EkmClient
     }
 
     /**
+     * Gets a new access token (and automatically sets it in the config)
+     *
+     * @return RefreshTokenResponse
+     */
+    public function refreshAccessToken($refreshToken)
+    {
+        $grant = new OAuth\RefreshTokenGrant($this, $this->config);
+        $response = $grant->call($refreshToken);
+        $this->config->setAccessToken($response->getAccessToken());
+        return $response;
+    }
+
+    /**
      * Get the Order Statuses API
      *
      * @return OrderStatusesApi
