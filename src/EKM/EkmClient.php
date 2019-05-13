@@ -13,7 +13,9 @@ class EkmClient
     public function __construct(Configuration $config, Guzzle $http = null)
     {
         $this->config = $config;
-        $this->http = $http;
+        $this->http = $http ?: new Guzzle([
+            'base_uri' => $config->getHost()
+        ]);
     }
 
     public function request(string $method, string $uri, array $options = [])
@@ -27,6 +29,19 @@ class EkmClient
         $body = $response->getBody();
         $json = json_decode($body->getContents(), true);
         return $json;
+    }
+
+    /**
+     * Gets a new access token (and automatically sets it in the config)
+     *
+     * @return RefreshTokenResponse
+     */
+    public function refreshAccessToken($refreshToken)
+    {
+        $grant = new OAuth\RefreshTokenGrant($this, $this->config);
+        $response = $grant->call($refreshToken);
+        $this->config->setAccessToken($response->getAccessToken());
+        return $response;
     }
 
     /**

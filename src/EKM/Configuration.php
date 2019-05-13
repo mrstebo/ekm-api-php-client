@@ -26,6 +26,13 @@ class Configuration
     private $redirectUri = '';
 
     /**
+     * The scopes (permissions) for OAuth
+     *
+     * @var string[]
+     */
+    private $scopes = [];
+
+    /**
      * Access token for OAuth
      *
      * @var string
@@ -118,6 +125,27 @@ class Configuration
     public function getRedirectUri()
     {
         return $this->redirectUri;
+    }
+
+    /**
+     * Sets the scopes for OAuth
+     *
+     * @return $this
+     */
+    public function setScopes($scopes)
+    {
+        $this->scopes = $scopes;
+        return $this;
+    }
+
+    /**
+     * Gets the scopes for OAuth
+     *
+     * @return string[] Scopes for OAuth
+     */
+    public function getScopes()
+    {
+        return $this->scopes;
     }
 
     /**

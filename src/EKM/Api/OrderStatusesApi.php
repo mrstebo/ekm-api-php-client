@@ -9,7 +9,7 @@ class OrderStatusesApi
     private $client;
 
     /**
-     * Constructs an instance of the Order Statuses API
+     * Constructs an instance of the OrderStatusesApi class
      *
      * @param EkmClient $client The EKM Client
      */
