@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mrstebo/ekm-api-php-client.svg?branch=master)](https://travis-ci.org/mrstebo/ekm-api-php-client)
+
 # ekm-api-php-client
 A PHP client library for accessing EKM APIs
 
