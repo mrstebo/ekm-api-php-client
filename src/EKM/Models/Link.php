@@ -4,13 +4,11 @@ namespace EKM\Models;
 
 class Link
 {
-    private $rel;
-    private $href;
+    private $link;
 
     public function __construct($link)
     {
-        $this->rel = $link['rel'];
-        $this->href = $link['href'];
+        $this->link = $link ?: [];
     }
 
     /**
@@ -20,7 +18,9 @@ class Link
      */
     public function getRel()
     {
-        return $this->rel;
+        return array_key_exists('rel', $this->link)
+            ? $this->link['rel']
+            : '';
     }
 
     /**
@@ -30,6 +30,8 @@ class Link
      */
     public function getHref()
     {
-        return $this->href;
+        return array_key_exists('href', $this->link)
+            ? $this->link['href']
+            : '';
     }
 }

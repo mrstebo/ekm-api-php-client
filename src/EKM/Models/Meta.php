@@ -4,15 +4,11 @@ namespace EKM\Models;
 
 class Meta
 {
-    private $pagesTotal;
-    private $itemsTotal;
-    private $itemsPerPage;
+    private $meta;
 
     public function __construct($meta)
     {
-        $this->pagesTotal = intval($meta['pages_total']);
-        $this->itemsTotal = intval($meta['items_total']);
-        $this->itemsPerPage = intval($meta['items_per_page']);
+        $this->meta = $meta ?: [];
     }
 
     /**
@@ -22,7 +18,9 @@ class Meta
      */
     public function getPagesTotal()
     {
-        return $this->pagesTotal;
+        return array_key_exists('pages_total', $this->meta)
+            ? intval($this->meta['pages_total'])
+            : 0;
     }
 
     /**
@@ -32,7 +30,9 @@ class Meta
      */
     public function getItemsTotal()
     {
-        return $this->itemsTotal;
+        return array_key_exists('items_total', $this->meta)
+            ? intval($this->meta['items_total'])
+            : 0;
     }
 
     /**
@@ -42,6 +42,8 @@ class Meta
      */
     public function getItemsPerPage()
     {
-        return $this->itemsPerPage;
+        return array_key_exists('items_per_page', $this->meta)
+            ? intval($this->meta['items_per_page'])
+            : 0;
     }
 }

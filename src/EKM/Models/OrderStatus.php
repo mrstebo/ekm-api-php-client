@@ -4,15 +4,11 @@ namespace EKM\Models;
 
 class OrderStatus
 {
-    private $name;
-    private $colour;
-    private $showInQuickStats;
+    private $orderStatus;
 
     public function __construct($orderStatus)
     {
-        $this->name = $orderStatus['name'] ?: '';
-        $this->colour = $orderStatus['colour'] ?: '';
-        $this->showInQuickStats = boolval($orderStatus['show_in_quick_stats']);
+        $this->orderStatus = $orderStatus ?: [];
     }
 
     /**
@@ -22,7 +18,9 @@ class OrderStatus
      */
     public function getName()
     {
-        return $this->name;
+        return array_key_exists('name', $this->orderStatus)
+            ? $this->orderStatus['name']
+            : '';
     }
 
     /**
@@ -32,7 +30,9 @@ class OrderStatus
      */
     public function getColour()
     {
-        return $this->colour;
+        return array_key_exists('colour', $this->orderStatus)
+            ? $this->orderStatus['colour']
+            : '';
     }
 
     /**
@@ -42,6 +42,8 @@ class OrderStatus
      */
     public function getShowInQuickStats()
     {
-        return $this->showInQuickStats;
+        return array_key_exists('show_in_quick_stats', $this->orderStatus)
+            ? boolval($this->orderStatus['show_in_quick_stats'])
+            : false;
     }
 }

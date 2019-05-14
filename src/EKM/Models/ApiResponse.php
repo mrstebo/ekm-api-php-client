@@ -4,15 +4,11 @@ namespace EKM\Models;
 
 class ApiResponse
 {
-    private $meta;
-    private $links;
-    private $data;
+    private $response;
 
     public function __construct($response)
     {
-        $this->meta = new Meta($response['meta']);
-        $this->links = new Links($response['links']);
-        $this->data = $response['data'];
+        $this->response = $response ?: [];
     }
 
     /**
@@ -22,7 +18,9 @@ class ApiResponse
      */
     public function getMeta()
     {
-        return $this->meta;
+        return array_key_exists('meta', $this->response)
+            ? new Meta($this->response['meta'])
+            : new Meta(null);
     }
 
     /**
@@ -32,7 +30,10 @@ class ApiResponse
      */
     public function getLinks()
     {
-        return $this->links->getLinks();
+        $links = array_key_exists('links', $this->response)
+            ? new Links($this->response['links'])
+            : new Links(null);
+        return $links->getLinks();
     }
 
     /**
@@ -42,6 +43,8 @@ class ApiResponse
      */
     public function getData()
     {
-        return $this->data;
+        return array_key_exists('data', $this->response)
+            ? $this->response['data']
+            : null;
     }
 }

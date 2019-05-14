@@ -4,15 +4,11 @@ namespace EKM\Models;
 
 class RefreshTokenResponse
 {
-    private $accessToken;
-    private $refreshToken;
-    private $expiresIn;
+    private $response;
 
     public function __construct($response)
     {
-        $this->accessToken = strval($response['access_token']);
-        $this->refreshToken = strval($response['refresh_token']);
-        $this->expiresIn = intval($response['expires_in']);
+        $this->response = $response ?: [];
     }
 
     /**
@@ -22,7 +18,9 @@ class RefreshTokenResponse
      */
     public function getAccessToken()
     {
-        return $this->accessToken;
+        return array_key_exists('access_token', $this->response)
+            ? $this->response['access_token']
+            : '';
     }
 
     /**
@@ -32,7 +30,9 @@ class RefreshTokenResponse
      */
     public function getRefreshToken()
     {
-        return $this->refreshToken;
+        return array_key_exists('refresh_token', $this->response)
+            ? $this->response['refresh_token']
+            : '';
     }
 
     /**
@@ -42,6 +42,8 @@ class RefreshTokenResponse
      */
     public function getExpiresIn()
     {
-        return $this->expiresIn;
+        return array_key_exists('expires_in', $this->response)
+            ? $this->response['expires_in']
+            : 0;
     }
 }
