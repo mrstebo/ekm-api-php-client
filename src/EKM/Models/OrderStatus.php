@@ -8,7 +8,7 @@ class OrderStatus
 
     public function __construct($orderStatus)
     {
-        $this->orderStatus = $orderStatus;
+        $this->orderStatus = $orderStatus ?: [];
     }
 
     /**
