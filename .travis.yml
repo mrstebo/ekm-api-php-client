@@ -1,0 +1,12 @@
+language: php
+php:
+  - '7.2'
+
+before_script:
+  - curl --silent --show-error https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+install:
+  - composer install
+
+script:
+  - vendor/bin/phpunit
