@@ -6,7 +6,7 @@ class Links
 {
     public function __construct($links)
     {
-        $this->links = $links ?: array();
+        $this->links = $links ?: [];
     }
 
     /**

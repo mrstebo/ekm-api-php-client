@@ -8,7 +8,7 @@ class ApiResponse
 
     public function __construct($response)
     {
-        $this->response = $response;
+        $this->response = $response ?: [];
     }
 
     /**
