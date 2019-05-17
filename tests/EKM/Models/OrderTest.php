@@ -5,6 +5,7 @@ declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 use \DateTime;
 use EKM\Models\Order;
+use EKM\Models\ShippingAddress;
 
 final class OrderTest extends TestCase
 {
@@ -118,9 +119,48 @@ final class OrderTest extends TestCase
 
     public function testGetShippingAddress()
     {
-        $order = new Order([ 'shipping_address' => '' ]);
+        $order = new Order([ 'shipping_address' => [
+            'id' => 246697252,
+            'customer_id' => 485430526,
+            'first_name' => 'Nichole',
+            'last_name' => 'Volkman',
+            'created_date' => '2018-11-28T07:27:03.142518Z',
+            'modified_date' => '2019-03-24T21:48:45.7682812Z',
+            'is_preferred_billing_address' => true,
+            'is_preferred_shipping_address' => false,
+            'company' => 'Collier Group',
+            'address' => '81658 Schowalter Crossing',
+            'address2' => 'Germainechester',
+            'town' => 'Bednarstad',
+            'county' => 'Berkshire',
+            'country' => 'GB',
+            'friendly_country' => 'United Kingdom',
+            'post_code' => 'GD7 1NT',
+            'telephone' => '458.437.1285 x8162',
+            'fax' => '(737) 711-9542 x188'
+        ] ]);
 
-        $this->assertEquals('x', $order->getShippingAddress());
+        $shippingAddress = $order->getShippingAddress();
+
+        $this->assertInstanceOf(ShippingAddress::class, $shippingAddress);
+        $this->assertEquals(246697252, $shippingAddress->getId());
+        $this->assertEquals(485430526, $shippingAddress->getCustomerId());
+        $this->assertEquals('Nichole', $shippingAddress->getFirstName());
+        $this->assertEquals('Volkman', $shippingAddress->getLastName());
+        $this->assertEquals('2018-11-28T07:27:03+00:00', $shippingAddress->getCreatedDate()->format('c'));
+        $this->assertEquals('2019-03-24T21:48:45+00:00', $shippingAddress->getModifiedDate()->format('c'));
+        $this->assertTrue($shippingAddress->getIsPreferredBillingAddress());
+        $this->assertFalse($shippingAddress->getIsPreferredShippingAddress());
+        $this->assertEquals('Collier Group', $shippingAddress->getCompany());
+        $this->assertEquals('81658 Schowalter Crossing', $shippingAddress->getAddress());
+        $this->assertEquals('Germainechester', $shippingAddress->getAddress2());
+        $this->assertEquals('Bednarstad', $shippingAddress->getTown());
+        $this->assertEquals('Berkshire', $shippingAddress->getCounty());
+        $this->assertEquals('GB', $shippingAddress->getCountry());
+        $this->assertEquals('United Kingdom', $shippingAddress->getFriendlyCountry());
+        $this->assertEquals('GD7 1NT', $shippingAddress->getPostCode());
+        $this->assertEquals('458.437.1285 x8162', $shippingAddress->getTelephone());
+        $this->assertEquals('(737) 711-9542 x188', $shippingAddress->getFax());
     }
 
     public function testGetInternalNotes()

@@ -200,7 +200,9 @@ class Order
      */
     public function getShippingAddress()
     {
-        return null;
+        return array_key_exists('shipping_address', $this->order)
+            ? new ShippingAddress($this->order['shipping_address'])
+            : new ShippingAddress(null);
     }
 
     /**
