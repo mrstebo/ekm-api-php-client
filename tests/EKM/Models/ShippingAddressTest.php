@@ -118,4 +118,24 @@ final class ShippingAddressTest extends TestCase
 
         $this->assertEquals('673.594.7305', $shippingAddress->getFax());
     }
+
+    public function testGetCreatedDate()
+    {
+        $shippingAddress = new ShippingAddress([ 'created_date' => '2018-10-02T09:51:26.0860336Z' ]);
+
+        $createdDate = $shippingAddress->getCreatedDate();
+
+        $this->assertInstanceOf(DateTime::class, $createdDate);
+        $this->assertEquals('2018-10-02T09:51:26+00:00', $createdDate->format('c'));
+    }
+
+    public function testGetModifiedDate()
+    {
+        $shippingAddress = new ShippingAddress([ 'modified_date' => '2019-01-19T07:10:30.2672427Z' ]);
+
+        $modifiedDate = $shippingAddress->getModifiedDate();
+
+        $this->assertInstanceOf(DateTime::class, $modifiedDate);
+        $this->assertEquals('2019-01-19T07:10:30+00:00', $modifiedDate->format('c'));
+    }
 }

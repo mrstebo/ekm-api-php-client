@@ -2,13 +2,15 @@
 
 namespace EKM\Models;
 
+use \DateTime;
+
 class ShippingAddress
 {
     private $shippingAddress;
 
     public function __construct($shippingAddress)
     {
-        $this->shippingAddress = $shippingAddress;
+        $this->shippingAddress = $shippingAddress ?: [];
     }
 
     /**
@@ -201,5 +203,29 @@ class ShippingAddress
         return array_key_exists('fax', $this->shippingAddress)
             ? $this->shippingAddress['fax']
             : '';
+    }
+
+    /**
+     * Gets the created date
+     *
+     * @return DateTime
+     */
+    public function getCreatedDate()
+    {
+        return array_key_exists('created_date', $this->shippingAddress)
+            ? new DateTime($this->shippingAddress['created_date'])
+            : new DateTime(1970, 0, 1);
+    }
+
+    /**
+     * Gets the modified date
+     *
+     * @return DateTime
+     */
+    public function getModifiedDate()
+    {
+        return array_key_exists('modified_date', $this->shippingAddress)
+            ? new DateTime($this->shippingAddress['modified_date'])
+            : new DateTime(1970, 0, 1);
     }
 }
