@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use \DateTime;
+use EKM\Models\CustomerDetail;
 use EKM\Models\Order;
 use EKM\Models\ShippingAddress;
 
@@ -228,8 +229,39 @@ final class OrderTest extends TestCase
 
     public function testGetCustomerDetails()
     {
-        $order = new Order([ 'customer_details' => '' ]);
+        $order = new Order([ 'customer_details' => [
+            'customer_id' => 2314232,
+            'email_address' => 'tomas_volkman@gmail.com',
+            'first_name' => 'Tomas',
+            'last_name' => 'Volkman',
+            'company' => 'Durgan, Quitzon and Ruecker',
+            'address' => '32324 O\'Keefe Brooks',
+            'address2' => 'Giovannychester',
+            'town' => 'Thompsonville',
+            'county' => 'Buckinghamshire',
+            'post_code' => 'HO3 2FS',
+            'country' => 'GB',
+            'telephone' => '887-419-3882 x627',
+            'fax' => '(564) 527-7913',
+            'billing_address_verified' => true
+        ] ]);
 
-        $this->assertEquals('x', $order->getCustomerDetails());
+        $customerDetails = $order->getCustomerDetails();
+
+        $this->assertInstanceOf(CustomerDetail::class, $customerDetails);
+        $this->assertEquals(2314232, $customerDetails->getCustomerId());
+        $this->assertEquals('tomas_volkman@gmail.com', $customerDetails->getEmailAddress());
+        $this->assertEquals('Tomas', $customerDetails->getFirstName());
+        $this->assertEquals('Volkman', $customerDetails->getLastName());
+        $this->assertEquals('Durgan, Quitzon and Ruecker', $customerDetails->getCompany());
+        $this->assertEquals('32324 O\'Keefe Brooks', $customerDetails->getAddress());
+        $this->assertEquals('Giovannychester', $customerDetails->getAddress2());
+        $this->assertEquals('Thompsonville', $customerDetails->getTown());
+        $this->assertEquals('Buckinghamshire', $customerDetails->getCounty());
+        $this->assertEquals('HO3 2FS', $customerDetails->getPostCode());
+        $this->assertEquals('GB', $customerDetails->getCountry());
+        $this->assertEquals('887-419-3882 x627', $customerDetails->getTelephone());
+        $this->assertEquals('(564) 527-7913', $customerDetails->getFax());
+        $this->assertTrue($customerDetails->getBillingAddressVerified());
     }
 }

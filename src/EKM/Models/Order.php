@@ -318,6 +318,8 @@ class Order
      */
     public function getCustomerDetails()
     {
-        return null;
+        return array_key_exists('customer_details', $this->order)
+            ? new CustomerDetail($this->order['customer_details'])
+            : new CustomerDetail(null);
     }
 }
