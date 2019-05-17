@@ -29,13 +29,7 @@ final class OrderTest extends TestCase
         $orderDate = $order->getOrderDate();
 
         $this->assertInstanceOf(DateTime::class, $orderDate);
-        $this->assertEquals('1997', $orderDate->format("Y"));
-        $this->assertEquals("07", $orderDate->format("m"));
-        $this->assertEquals("23", $orderDate->format("d"));
-        $this->assertEquals("03", $orderDate->format("H"));
-        $this->assertEquals("54", $orderDate->format("i"));
-        $this->assertEquals("26", $orderDate->format("s"));
-        $this->assertEquals("014379", $orderDate->format("u"));
+        $this->assertEquals('1997-07-23T03:54:26+00:00', $orderDate->format('c'));
     }
 
     public function testGetIsConfirmed()
