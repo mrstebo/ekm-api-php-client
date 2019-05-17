@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use \DateTime;
-use EKM\Models\CustomerDetail;
+use EKM\Models\CustomerDetails;
 use EKM\Models\Order;
 use EKM\Models\ShippingAddress;
 
@@ -248,7 +248,7 @@ final class OrderTest extends TestCase
 
         $customerDetails = $order->getCustomerDetails();
 
-        $this->assertInstanceOf(CustomerDetail::class, $customerDetails);
+        $this->assertInstanceOf(CustomerDetails::class, $customerDetails);
         $this->assertEquals(2314232, $customerDetails->getCustomerId());
         $this->assertEquals('tomas_volkman@gmail.com', $customerDetails->getEmailAddress());
         $this->assertEquals('Tomas', $customerDetails->getFirstName());

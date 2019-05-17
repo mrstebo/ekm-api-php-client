@@ -2,13 +2,13 @@
 
 namespace EKM\Models;
 
-class CustomerDetail
+class CustomerDetails
 {
-    private $customerDetail;
+    private $customerDetails;
 
-    public function __construct($customerDetail)
+    public function __construct($customerDetails)
     {
-        $this->customerDetail = $customerDetail;
+        $this->customerDetails = $customerDetails ?: [];
     }
 
     /**
@@ -18,8 +18,8 @@ class CustomerDetail
      */
     public function getCustomerId()
     {
-        return array_key_exists('customer_id', $this->customerDetail)
-            ? intval($this->customerDetail['customer_id'])
+        return array_key_exists('customer_id', $this->customerDetails)
+            ? intval($this->customerDetails['customer_id'])
             : 0;
     }
 
@@ -30,8 +30,8 @@ class CustomerDetail
      */
     public function getEmailAddress()
     {
-        return array_key_exists('email_address', $this->customerDetail)
-            ? $this->customerDetail['email_address']
+        return array_key_exists('email_address', $this->customerDetails)
+            ? $this->customerDetails['email_address']
             : '';
     }
 
@@ -42,8 +42,8 @@ class CustomerDetail
      */
     public function getFirstName()
     {
-        return array_key_exists('first_name', $this->customerDetail)
-            ? $this->customerDetail['first_name']
+        return array_key_exists('first_name', $this->customerDetails)
+            ? $this->customerDetails['first_name']
             : '';
     }
 
@@ -54,8 +54,8 @@ class CustomerDetail
      */
     public function getLastName()
     {
-        return array_key_exists('last_name', $this->customerDetail)
-            ? $this->customerDetail['last_name']
+        return array_key_exists('last_name', $this->customerDetails)
+            ? $this->customerDetails['last_name']
             : '';
     }
 
@@ -66,8 +66,8 @@ class CustomerDetail
      */
     public function getCompany()
     {
-        return array_key_exists('company', $this->customerDetail)
-            ? $this->customerDetail['company']
+        return array_key_exists('company', $this->customerDetails)
+            ? $this->customerDetails['company']
             : '';
     }
 
@@ -78,8 +78,8 @@ class CustomerDetail
      */
     public function getAddress()
     {
-        return array_key_exists('address', $this->customerDetail)
-            ? $this->customerDetail['address']
+        return array_key_exists('address', $this->customerDetails)
+            ? $this->customerDetails['address']
             : '';
     }
 
@@ -90,8 +90,8 @@ class CustomerDetail
      */
     public function getAddress2()
     {
-        return array_key_exists('address2', $this->customerDetail)
-            ? $this->customerDetail['address2']
+        return array_key_exists('address2', $this->customerDetails)
+            ? $this->customerDetails['address2']
             : '';
     }
 
@@ -102,8 +102,8 @@ class CustomerDetail
      */
     public function getTown()
     {
-        return array_key_exists('town', $this->customerDetail)
-            ? $this->customerDetail['town']
+        return array_key_exists('town', $this->customerDetails)
+            ? $this->customerDetails['town']
             : '';
     }
 
@@ -114,8 +114,8 @@ class CustomerDetail
      */
     public function getCounty()
     {
-        return array_key_exists('county', $this->customerDetail)
-            ? $this->customerDetail['county']
+        return array_key_exists('county', $this->customerDetails)
+            ? $this->customerDetails['county']
             : '';
     }
 
@@ -126,8 +126,8 @@ class CustomerDetail
      */
     public function getPostCode()
     {
-        return array_key_exists('post_code', $this->customerDetail)
-            ? $this->customerDetail['post_code']
+        return array_key_exists('post_code', $this->customerDetails)
+            ? $this->customerDetails['post_code']
             : '';
     }
 
@@ -138,8 +138,8 @@ class CustomerDetail
      */
     public function getCountry()
     {
-        return array_key_exists('country', $this->customerDetail)
-            ? $this->customerDetail['country']
+        return array_key_exists('country', $this->customerDetails)
+            ? $this->customerDetails['country']
             : '';
     }
 
@@ -150,8 +150,8 @@ class CustomerDetail
      */
     public function getTelephone()
     {
-        return array_key_exists('telephone', $this->customerDetail)
-            ? $this->customerDetail['telephone']
+        return array_key_exists('telephone', $this->customerDetails)
+            ? $this->customerDetails['telephone']
             : '';
     }
 
@@ -162,8 +162,8 @@ class CustomerDetail
      */
     public function getFax()
     {
-        return array_key_exists('fax', $this->customerDetail)
-            ? $this->customerDetail['fax']
+        return array_key_exists('fax', $this->customerDetails)
+            ? $this->customerDetails['fax']
             : '';
     }
 
@@ -174,8 +174,8 @@ class CustomerDetail
      */
     public function getBillingAddressVerified()
     {
-        return array_key_exists('billing_address_verified', $this->customerDetail)
-            ? boolval($this->customerDetail['billing_address_verified'])
+        return array_key_exists('billing_address_verified', $this->customerDetails)
+            ? boolval($this->customerDetails['billing_address_verified'])
             : false;
     }
 }
