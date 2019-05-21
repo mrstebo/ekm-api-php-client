@@ -24,7 +24,7 @@ class OrderItem
     }
 
     /**
-     * Gets the orderID
+     * Gets the order ID
      * 
      * @return integer
      */
@@ -128,6 +128,18 @@ class OrderItem
     {
         return array_key_exists('quantity', $this->orderItem)
             ? intval($this->orderItem['quantity'])
+            : 0;
+    }
+
+    /**
+     * Gets the original item ID
+     * 
+     * @return integer
+     */
+    public function getOriginalItemId()
+    {
+        return \array_key_exists('original_item_id', $this->orderItem)
+            ? intval($this->orderItem['original_item_id'])
             : 0;
     }
 }
