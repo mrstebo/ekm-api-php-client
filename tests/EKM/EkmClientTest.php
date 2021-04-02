@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
-use PHPUnit\Framework\TestCase;
-
 use EKM\Configuration;
 use EKM\EkmClient;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
+use PHPUnit\Framework\TestCase;
 
 final class EkmClientTest extends TestCase
 {
@@ -29,7 +28,7 @@ final class EkmClientTest extends TestCase
 
         $result = $client->refreshAccessToken('abc-123-xyz');
 
-        $this->assertInstanceOf(EKM\Models\RefreshTokenResponse::class, $result);
+        $this->assertInstanceOf(EKM\OAuth\RefreshToken\RefreshTokenResponse::class, $result);
         $this->assertEquals('my-access-token', $result->getAccessToken());
         $this->assertEquals('my-refresh-token', $result->getRefreshToken());
         $this->assertEquals(3600, $result->getExpiresIn());
@@ -42,7 +41,7 @@ final class EkmClientTest extends TestCase
         $client = new EkmClient($config);
 
         $this->assertInstanceOf(
-            EKM\Api\OrderStatusesApi::class,
+            EKM\OrderStatuses\OrderStatusesApi::class,
             $client->orderStatuses()
         );
     }

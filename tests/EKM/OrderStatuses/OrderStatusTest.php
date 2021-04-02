@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
+use EKM\OrderStatuses\OrderStatus;
 use PHPUnit\Framework\TestCase;
-use EKM\Models\OrderStatus;
 
 final class OrderStatusTest extends TestCase
 {

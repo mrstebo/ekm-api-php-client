@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use PHPUnit\Framework\TestCase;
 use EKM\Configuration;
+use PHPUnit\Framework\TestCase;
 
 final class ConfigurationTest extends TestCase
 {

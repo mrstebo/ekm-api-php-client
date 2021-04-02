@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
+use EKM\Core\Meta;
 use PHPUnit\Framework\TestCase;
-use EKM\Models\Meta;
 
 final class MetaTest extends TestCase
 {

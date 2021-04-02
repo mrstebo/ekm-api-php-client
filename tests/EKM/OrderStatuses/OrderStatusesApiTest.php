@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use PHPUnit\Framework\TestCase;
 use EKM\EkmClient;
-use EKM\Api\OrderStatusesApi;
-use EKM\Models\GetOrderStatusesResponse;
+use EKM\OrderStatuses\OrderStatusesApi;
+use EKM\OrderStatuses\GetOrderStatuses\GetOrderStatusesResponse;
+use PHPUnit\Framework\TestCase;
 
 final class OrderStatusesApiTest extends TestCase
 {

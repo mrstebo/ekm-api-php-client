@@ -2,6 +2,8 @@
 
 namespace EKM;
 
+use EKM\OAuth\RefreshToken\RefreshTokenGrant;
+use EKM\OrderStatuses\OrderStatusesApi;
 use GuzzleHttp\Client as Guzzle;
 use GuzzleHttp\HandlerStack;
 
@@ -38,7 +40,7 @@ class EkmClient
      */
     public function refreshAccessToken($refreshToken)
     {
-        $grant = new OAuth\RefreshTokenGrant($this, $this->config);
+        $grant = new RefreshTokenGrant($this, $this->config);
         $response = $grant->call($refreshToken);
         $this->config->setAccessToken($response->getAccessToken());
         return $response;
@@ -51,6 +53,6 @@ class EkmClient
      */
     public function orderStatuses()
     {
-        return new Api\OrderStatusesApi($this);
+        return new OrderStatusesApi($this);
     }
 }

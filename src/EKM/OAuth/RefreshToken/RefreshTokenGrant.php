@@ -1,8 +1,6 @@
 <?php
 
-namespace EKM\OAuth;
-
-use EKM\Models\RefreshTokenResponse;
+namespace EKM\OAuth\RefreshToken;
 
 class RefreshTokenGrant
 {

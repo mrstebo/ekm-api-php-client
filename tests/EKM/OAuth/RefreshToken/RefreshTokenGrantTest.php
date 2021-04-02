@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use PHPUnit\Framework\TestCase;
 use EKM\Configuration;
 use EKM\EkmClient;
-use EKM\Models\RefreshTokenResponse;
-use EKM\OAuth\RefreshTokenGrant;
+use EKM\OAuth\RefreshToken\RefreshTokenResponse;
+use EKM\OAuth\RefreshToken\RefreshTokenGrant;
+use PHPUnit\Framework\TestCase;
 
 final class RefreshTokenGrantTest extends TestCase
 {

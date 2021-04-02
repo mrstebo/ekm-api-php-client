@@ -1,10 +1,10 @@
 <?php
 
-namespace EKM\Api;
+namespace EKM\OrderStatuses\GetOrderStatuses;
 
-use EKM\Models\GetOrderStatusesResponse;
+use EKM\EkmClient;
 
-class OrderStatusesApi
+class GetOrderStatusesRequest
 {
     private $client;
 
@@ -23,9 +23,10 @@ class OrderStatusesApi
      *
      * @return GetOrderStatusesResponse
      */
-    public function getOrderStatuses()
+    public function execute()
     {
         $response = $this->client->request('GET', '/v1/settings/orderstatuses');
+
         return new GetOrderStatusesResponse($response);
     }
 }

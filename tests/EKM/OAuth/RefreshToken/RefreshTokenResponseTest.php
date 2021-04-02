@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
+use EKM\OAuth\RefreshToken\RefreshTokenResponse;
 use PHPUnit\Framework\TestCase;
-use EKM\Models\RefreshTokenResponse;
 
 final class RefreshTokenResponseTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace EKM\Models;
+namespace EKM\OrderStatuses;
 
 class OrderStatus
 {

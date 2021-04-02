@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
+use EKM\OrderStatuses\GetOrderStatuses\GetOrderStatusesResponse;
+use EKM\OrderStatuses\OrderStatus;
 use PHPUnit\Framework\TestCase;
-use EKM\Models\GetOrderStatusesResponse;
-use EKM\Models\OrderStatus;
 
 final class GetOrderStatusesResponseTest extends TestCase
 {

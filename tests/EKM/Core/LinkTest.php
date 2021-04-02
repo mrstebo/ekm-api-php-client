@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
+use EKM\Core\Link;
 use PHPUnit\Framework\TestCase;
-use EKM\Models\Link;
 
 final class LinkTest extends TestCase
 {
